@@ -107,5 +107,5 @@ See steps to deploy code (above) for the required environment variables.
 
 4. Run code
 ```
-python manage.py runservers
+python manage.py runserver
 ```
