@@ -1,0 +1,102 @@
+{% extends 'wrapper.html'%}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'guests/article_list.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="section">
+
+    <div class="section-header">
+        <h2 class="page-header">{{category|title}}</h2>
+    </div>
+
+    <div class="dropdown show text-right">
+        <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{category}}
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item {% if category == 'All Posts' %}active{% endif %}" href="{% url 'article_list' %}">All Posts</a>
+            {% for cat in categories %}
+            <a class="dropdown-item {% if cat.name == category %}active{% endif %}" href="{% url 'cat_article_list' category=cat.name %}">{{ cat.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    {% for article in object_list %}
+    <div class="row no-wrap">
+        <div class="col-1 col-sm-2 timeline-line">
+            <span class="timeline-circle"></span>
+            <div class="timeline-date-outer d-none d-md-flex">
+                <span class="timeline-date">{{ article.created_at | date:"d M Y" }}</span>
+                <span class="timeline-day">{{ article.created_at | date:'l' }}</span>
+            </div>
+        </div>
+        <div class="col-11 col-sm-10">
+            <div class="timeline-date-outer d-flex d-md-none ">
+                <span class="timeline-date">{{ article.created_at | date }} //
+                    {{ article.created_at | date:'l' }}</span>
+            </div>
+            <div class="timeline-content">
+                <div class="timeline-content-title">
+                    {{ article.title|title }}
+                </div>
+
+                <div class="timeline-content-description">
+                    {{ article.snippet }}
+                </div>
+                <div class="group">
+                    <a href="{% url 'article_detail' slug=article.slug %}" class="link read-more">Read more</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    {% endfor %}
+
+    {% if is_paginated %}
+    <div class="row">
+        <div class="col-6 col-md-3">
+            {% if page_obj.has_previous %}
+            <a class="link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+        </div>
+
+        <div class="d-none d-md-flex col-md-6 center">
+            {% if page_obj.number|add:'-2' > 1 %}
+            <span class="dots">...</span>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+            <span class="page-number selected" href="?page={{ num }}">{{ num }}</span>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a class="link page-number" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+            {% endfor %}
+
+            {% if page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+            <span class="dots">...</span>
+            {% endif %}
+        </div>
+
+        <div class="col-6 col-md-3 text-right">
+            {% if page_obj.has_next %}
+            <a class="link" href="?page={{ page_obj.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
+    </div>
+
+
+    {% endif %}
+
+</div>
+
+{% include 'mobile_header.html' %}
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'wrapper.html'%} {% load static %} {% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'editor/content_editor.css' %}"> {% endblock %} {% block body %}
+
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/froala-editor@3.0.0-beta.1//js/froala_editor.pkgd.min.js"></script>
+
+<div class="content-editor">
+
+    <h2 class="d-none d-md-block page-header">Post Editor</h2>
+
+    <div id="done" class="mobile-editor-header d-flex d-md-none link">
+        Done
+    </div>
+
+    <div class="cover d-block d-md-none"></div>
+
+    <form method="POST">
+        {{ form.media }} 
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-9 main-inputs-container">
+                <input class="title-input d-none d-md-block" name="title" type="text" placeholder="title"
+                    value="{{ query.title }}" required/>
+                <textarea class="description-input d-none d-md-block" name="description"
+                    placeholder="description" required>{{ query.description }}</textarea>
+                <div class="fr-shadow d-block d-md-none"></div>
+                <textarea id="edit" name="content">{{ query.content }}</textarea>
+            </div>
+            <div class="col-md-3 done-modal">
+                <div class="d-flex d-md-none modal-head">
+                    <div class="link" id="back-button">Back</div>
+                </div>
+                <span class="pad-bot d-block d-md-none">Title:</span>
+                <input class="title-input d-block d-md-none" name="title" type="text" placeholder="title"
+                    value="{{ query.title }}" required/>
+                <span class="pad-top pad-bot d-block d-md-none">Description:</span>
+                <textarea class="description-input d-block d-md-none" name="description"
+                    placeholder="description" required>{{ query.description }}</textarea>
+                <div class="d-block d-md-none pad-top">
+                    <span class="bold">Created at:</span>
+                    {{query.created_at}}
+                </div>
+                <div class="d-block d-md-none pad-top pad-bot">
+                    <span class="bold">Updated at:</span>
+                    {{query.updated_at}}
+                </div>
+                <div class="button-group">
+                    <button type="submit" name="save" class="btn btn-primary">Save</button>
+                    <button type="submit" name="publish" class="btn btn-success">Publish</button>
+                    <button id="view-button" type="submit" name="view" class="btn btn-success">Publish & View</button>
+                    <button type="submit" name="delete" class="btn btn-danger delete-button">Delete</button>
+                </div>
+                <div class="categories-container">
+                    <input id="category-input" type="text" class="form-control input" placeholder="Add categories...">
+                    <div id='list' class="category-tags" name="categories">
+                        {% for cat in query.category.all %}
+                        <div class="category-tag">
+                            <input class="category" name="category" value="{{cat}}">
+                            <a class="link remove-category" href="javascript:void(0)">x</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="{% static 'editor/content_editor.js' %}"></script>
+<script src="{% static 'global.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'wrapper.html'%} {% load static %} {% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'editor/settings.css' %}"> {% endblock %} {% block body %}
+
+<h2 class="page-header">Settings</h2>
+
+<div class="section settings">
+    <form class="sub-section d-block d-md-none" action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <input class="btn btn-primary auth-button" value="Logout" type="submit" />
+    </form>
+    <div class="sub-section row d-md-flex">
+        <h3 class="settings-header col-md-2">Backup</h3>
+        <p class="paragraph d-block d-md-none">Backup can only be done through laptop/desktop.</p>
+        <div class="col-md-10 d-none d-md-block">
+            <div class="section">
+                <h2 class="settings-header">Posts</h2>
+                <form class="flex" action="{% url 'download_blogposts' %}" method="POST">
+                    {% csrf_token %}
+                    <span class="label">Download all posts:</span>
+                    <input class="link" value="Download" type="submit" />
+                </form>
+                <form class="flex" action="{% url 'upload_blogposts' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="label">Upload posts:</span>
+                    <input type="file" name="file" accept=".csv" required>
+                    <input class="link" value="Upload" type="submit" />
+                </form>
+                <form class="flex" action="{% url 'delete_blogposts' %}" method="POST">
+                    {% csrf_token %}
+                    <span class="label">Delete all posts:</span>
+                    <input class="link danger delete-button" value="Delete" type="submit" />
+                </form>
+            </div>
+
+            <div class="section">
+                <h2 class="settings-header">Media</h2>
+                <form action="{% url 'download_aws_media' %}" method="POST">
+                    {% csrf_token %}
+                    <span class="label">Download all media:</span>
+                    <input class="link" value="Download" type="submit" />
+                </form>
+                <form action="{% url 'upload_aws_media' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="label">Upload media:</span>
+                    <input type="file" name="file" accept=".zip" required>
+                    <input class="link" value="Upload" type="submit" />
+                </form>
+                <form action="{% url 'delete_aws_media' %}" method="POST">
+                    {% csrf_token %}
+                    <span class="label">Delete all media:</span>
+                    <input class="link danger delete-button" value="Delete" type="submit" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'mobile_header.html' %}
+
+<script src="{% static 'global.js' %}"></script>
+<script src="{% static 'editor/settings.js' %}"></script>
+
+
+{% endblock %}

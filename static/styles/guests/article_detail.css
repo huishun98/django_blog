@@ -1,0 +1,98 @@
+.single-title {
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.single-date {
+    font-size: 14px;
+    color: var(--main-color-four);
+}
+
+.single-description {
+    color: var(--main-color-four);
+    padding: 10px 0 10px 0;
+}
+
+.rich-text p+h2, .rich-text p+h3, .rich-text p+h4, .rich-text figure+h2, .rich-text figure+h3, .rich-text figure+h4, .rich-text ul+h2, .rich-text ul+h3, .rich-text ul+h4 {
+    margin-top: 2rem;
+}
+
+.single-body {
+    padding: 20px 0;
+    line-height: 26px;
+}
+
+.single-body p {
+    padding-bottom: 10px;
+}
+
+/* rich text  */
+
+.rich-text p {
+    margin-bottom: 0.5em;
+}
+
+.rich-text blockquote {
+    margin: 0 0 1rem 40px;
+}
+
+.rich-text h1, .rich-text h2, .rich-text h3, .rich-text h4 {
+    margin-top: 0rem;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.rich-text h1 {
+    font-size: 2.6rem;
+}
+
+.rich-text h2 {
+    font-size: 2.2rem;
+}
+
+.rich-text h3 {
+    font-size: 1.8rem;
+}
+
+.rich-text h4 {
+    font-size: 1.6rem;
+}
+
+.edit-button {
+    display: block;
+    text-align: left;
+}
+
+.edit-button-wrapper {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-label {
+    margin-right: 5px;
+}
+
+.single-category {
+    display: flex;
+    align-items: center;
+}
+
+.category + .category::before {
+    content: ", ";
+    margin-right: 5px;
+    pointer-events: none;
+    cursor: auto;
+    color: var(--main-color-one)
+}
+
+.pagination-group {
+    padding: 30px 0;
+}
+
+@media only screen and (min-width: 768px) {
+    .single-title {
+        font-size: 50px;
+    }
+}

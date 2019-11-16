@@ -1,0 +1,237 @@
+.title-input {
+    width: 100%;
+    min-height: 34px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color-one);
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.description-input {
+    width: 100%;
+    min-height: 76px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color-one);
+    padding: 5px 15px 5px 15px;
+}
+
+.content-editor .btn {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.main-inputs-container {
+    padding-bottom: 20px;
+}
+
+/* mobile */
+
+.mobile-editor-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-evenly;
+    height: 50px;
+    background: var(--main-color-five);
+    box-shadow: var(--box-shadow);
+    z-index: 100;
+    align-items: center;
+}
+
+.cover {
+    background: var(--main-color-five);
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.6;
+}
+
+.cover.active {
+    z-index: 101;
+}
+
+.modal-head {
+    margin-bottom: 20px;
+}
+
+.done-modal {
+    display: none;
+    background: var(--main-color-five);
+    width: unset;
+    position: fixed;
+    top: 50px;
+    bottom: 50px;
+    left: 20px;
+    right: 20px;
+    padding: 20px;
+    z-index: -1;
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+    overflow: auto
+}
+
+.done-modal.active {
+    display: flex;
+    flex-direction: column;
+    z-index: 102;
+}
+
+.fr-box {
+    position: absolute;
+    left: -10px;
+    right: -10px;
+    top: 0px;
+}
+
+.button-group {
+    padding: 20px 0;
+    order: 2;
+}
+
+.fr-box a.fr-floating-btn.fr-btn+.fr-btn {
+    margin-left: 0;
+    margin-top: 10px;
+}
+
+.fr-toolbar.fr-top {
+    position: fixed;
+    margin-top: 50px;
+    z-index: 20;
+    width: 100%;
+}
+
+.fr-box.fr-basic .fr-element {
+    padding-top: 50px;
+    height: 700px;
+    padding-bottom: 50px;
+}
+
+.fr-sticky-dummy, .fr-sticky-on+.fr-sticky-dummy, .fr-quick-insert, .fr-qi-helper {
+    display: none
+}
+
+.fr-mobile.fr-top .fr-float-left, .fr-mobile.fr-top .fr-float-right {
+    margin: 0;
+}
+
+.second-toolbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    border-top: 1px solid #CCCCCC;
+}
+
+.fr-box.fr-basic .fr-wrapper {
+    border: none
+}
+
+/* disable buttons */
+
+#fullscreen-1, #print-1, #getPDF-1, #spellChecker-1 {
+    display: none;
+}
+
+/* category tags */
+.category-tag {
+    margin-top: 10px;
+    position: relative;
+}
+
+.category-tag+.category-tag {
+    margin-top: 2px;
+}
+
+.categories-container {
+    order: 1;
+    background-color: var(--border-color-one);
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.category {
+    width: 100%;
+    border: 1px solid var(--main-color-four);
+    border-radius: 5px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.remove-category {
+    position: absolute;
+    right: 10px;
+    height: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+    .categories-container {
+        order: 2
+    }
+    #fullscreen-1, #print-1, #getPDF-1 {
+        display: inline-block;
+    }
+    .done-modal {
+        display: flex;
+        flex-direction: column;
+        background: unset;
+        width: 100%;
+        position: relative;
+        padding: 0 15px;
+        z-index: 1;
+        box-shadow: unset;
+        top: unset;
+        bottom: unset;
+        left: unset;
+        right: unset;
+    }
+    .fr-box {
+        position: relative;
+        margin-left: 10px;
+        width: 100%;
+    }
+    .button-group {
+        padding: 0;
+        order: 1;
+    }
+    .fr-box a.fr-floating-btn.fr-btn+.fr-btn {
+        margin-left: 10px;
+        margin-top: 0;
+    }
+    .fr-toolbar.fr-top {
+        position: relative;
+        margin-top: unset;
+        width: unset;
+    }
+    .fr-box.fr-basic .fr-element {
+        padding-top: 20px;
+        height: 400px;
+        padding-bottom: 20px;
+    }
+    .second-toolbar {
+        position: relative;
+        border-top: none;
+    }
+    .fr-box.fr-basic .fr-wrapper {
+        border: 1px solid #CCCCCC;
+    }
+}
+
+.buffer {
+    margin-bottom: 0px;
+}

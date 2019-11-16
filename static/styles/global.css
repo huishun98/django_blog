@@ -1,0 +1,166 @@
+:root {
+    --main-color-one: #494949;
+    --main-color-two: #007bff;
+    --main-color-three: #0645AD;
+    --main-color-four: rgba(73, 73, 73, 0.7);
+    --main-color-five: white;
+    --border-color-one: #c7c7c79d;
+    --danger-color-one: #dc3545;
+    --success-color-one: #28a745;
+    --box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+body {
+    color: var(--main-color-one)
+}
+
+ul {
+    margin: 0
+}
+
+a:hover {
+    text-decoration: unset;
+}
+
+svg {
+    vertical-align: unset;
+}
+
+.navbar {
+    padding: 1rem
+}
+
+.body {
+    max-width: 800px;
+    padding: 30px 10px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.section {
+    padding: 0 0 30px 0;
+}
+
+.auth-button {
+    justify-self: right
+}
+
+.sub-section {
+    padding: 20px 0;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.pad-top {
+    padding-top: 10px;
+}
+
+.pad-bot {
+    padding-bottom: 10px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.show>.btn-outline-primary.dropdown-toggle {
+    color: var(--main-color-five);
+}
+
+/* links */
+
+.link, .link-button {
+    font-size: 16px;
+    color: var(--main-color-two);
+    text-align: center;
+    display: inline-block;
+    fill: var(--main-color-two);
+    background: none;
+    border: none;
+    outline: none;
+    vertical-align: middle;
+}
+
+.link:hover, .link-button:hover {
+    fill: var(--main-color-three);
+}
+
+/* header */
+
+.buffer {
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.fixed-header {
+    background-color: var(--main-color-five);
+    box-shadow: var(--box-shadow);
+    height: 50px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.5s;
+    padding: 0 20px;
+    align-items: center;
+}
+
+.group {
+    display: flex;
+}
+
+.mobile-header {
+    background-color: var(--main-color-five);
+    height: 50px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-evenly;
+    transition: all 0.5s;
+    padding: 0 20px;
+    align-items: center;
+    bottom: 0;
+    box-shadow: var(--box-shadow);
+}
+
+.danger {
+    color: var(--danger-color-one)
+}
+
+.success {
+    color: var(--success-color-one)
+}
+
+.page-header {
+    font-size: 24px;
+}
+
+.body, .link, .link-button, .btn, .mobile-header {
+    font-size: 14px;
+}
+
+@media only screen and (min-width: 768px) {
+    .page-header {
+        font-size: 32px;
+    }
+    .body, .link, .link-button, .btn, .mobile-header {
+        font-size: 16px;
+    }
+    .body {
+        padding: 50px 10px;
+    }
+}

@@ -1,0 +1,81 @@
+.bottom-line {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.row-container {
+    padding: 15px 0;
+}
+
+.title-and-options-container {
+    padding-left: 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-right: 15px;
+}
+
+.post-item-title {
+    font-weight: 500;
+    width: 40%;
+}
+
+.edit-options-container {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0px;
+    justify-content: flex-end;
+}
+
+.edit-options-item {
+    margin: 0;
+}
+
+.edit-options-item+.edit-options-item::before {
+    content: "|";
+    margin-left: 5px;
+    margin-right: 2px;
+}
+
+.dates-container {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.delete-button {
+    padding: 0;
+    color: var(--danger-color-one)
+}
+
+.create-btn {
+    margin: 20px 0;
+    width: 100%;
+}
+
+.redirect-link {
+    text-align: right;
+    width: 100%;
+}
+
+.category-tag + .category-tag::before {
+    content: ",";
+    pointer-events: none;
+    cursor: auto;
+    color: var(--main-color-one);
+    margin-right: 3px;
+}
+
+@media only screen and (min-width: 768px) {
+    .create-btn {
+        width: unset;
+    }
+    .post-item-title {
+        width: unset;
+    }
+    .edit-options-container {
+        justify-content: flex-start;
+    }
+}

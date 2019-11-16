@@ -1,0 +1,37 @@
+{% extends 'wrapper.html'%} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'editor/main_editor.css' %}"> 
+{% endblock %}
+
+{% block body %}
+<h2 class="page-header">Main Editor</h2>
+
+<a href="{% url 'main_editor' %}" class="link redirect-link">Edit Posts</a>
+
+<div class="section">
+    {% for cat in categories %}
+    <form class="bottom-line row-container row" method="POST">
+        {% csrf_token %}
+        <div class="title-and-options-container d-flex d-md-block">
+            <div>
+                <span class="post-item-title">{{cat.name|title}}</span>
+                <span>({{cat.articles.all.count}})</span>
+            </div>
+            <ul class="edit-options-container">
+                <li class="edit-options-item">
+                    <input type="hidden" name="name" value="{{cat.name}}">
+                    <input type="submit" class="delete-button link-button" value="Delete">
+                </li>
+            </ul>
+        </div>
+
+    </form>
+    {% endfor %}
+</div>
+
+{% include 'mobile_header.html' %}
+
+<script src="{% static 'global.js' %}"></script>
+
+{% endblock %}
