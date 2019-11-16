@@ -9,7 +9,7 @@ You may log in with these credentials:
 
 This blog is meant for bloggers who want a fully customisable blog/website with a fully customisable content management system.
 
-The design of this blog is meant to be minimalistic and easily changed and customised to fit its user's vision.
+The design of this blog is meant to be minimalistic and can be easily altered to fit its user's vision.
 
 ## Features
 On top of basic CRUD functionality, this web app has several other features:
