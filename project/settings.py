@@ -26,7 +26,6 @@ SECRET_KEY = 'cdf0qg=)_e!hhntvogr$8%szw8tp84lgn61he+c^tyqep=s+%f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 environment_type = os.environ.get('ENVIRONMENT_TYPE')
-print('Environment Type is {}'.format(environment_type))
 
 if environment_type == 'production':
     DEBUG = False
