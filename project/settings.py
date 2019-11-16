@@ -33,7 +33,7 @@ if environment_type == 'production':
 elif environment_type == 'development':
     DEBUG = True
 
-ALLOWED_HOSTS = ['blog-code.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['hs-django-blog.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -118,7 +118,7 @@ else:
             'PORT': 5432
         }
     }
-    HOSTNAME = 'blog-code.herokuapp.com'
+    HOSTNAME = 'hs-django-blog.herokuapp.com'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref//#auth-password-validators
