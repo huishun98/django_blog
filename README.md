@@ -20,7 +20,7 @@ On top of basic CRUD functionality, this web app has several other features:
 ## Steps to deploy code (using Heroku and AWS S3)
 1. Fork this repository.
 2. Create a Heroku account and initialise a new application. Deploy the forked repository to Heroku.
-3. Create and configure AWS S3 account to store media files
+3. Create and configure AWS S3 account to store media files.
 
 Create a new bucket and add the following code into Permissions > Bucket Policy
 ```
@@ -46,7 +46,7 @@ Create a new bucket and add the following code into Permissions > Bucket Policy
     ]
 }
 ```
-4. Create Heroku Postgres database under resources
+4. Create Heroku Postgres database under resources.
 5. Configure Heroku Config Vars at Heroku settings.
 
 The configuration should include:
@@ -64,13 +64,13 @@ From Heroku:
 - DATABASE_HOST
 - ENVIRONMENT_TYPE (production for production, debug for debug)
 
-6. Change HOSTNAME and ALLOWED_HOSTS in settings.py file from hs-django-blog to the created Heroku application name
-7. Deploy on Heroku
+6. Change HOSTNAME and ALLOWED_HOSTS in settings.py file from hs-django-blog to the created Heroku application name.
+7. Deploy on Heroku.
 8. On Heroku console, make migrations.
 ```
 python mange.py migrate
 ```
-On the same console, create super user (admin)
+On the same console, create super user (admin).
 ```
 python manage.py createsuperuser
 ```
