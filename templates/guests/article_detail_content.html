@@ -1,8 +1,10 @@
 <h1 class="single-title">{{article.title|title}}</h1>
 
+{% if article.published_at %}
 <div class="single-date">
     <p>{{article.published_at}}</p>
 </div>
+{% endif %}
 
 <div class="single-description">
     <p>{{article.description}}</p>
