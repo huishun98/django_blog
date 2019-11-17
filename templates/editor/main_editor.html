@@ -57,7 +57,11 @@
         </div>
 
         <div class="dates-container d-none d-md-flex col-md-4">
-            <span>{{article.created_at}}</span>
+            {% if article.published_at %}
+            <span>Published {{article.published_at | date:"d M"}}</span>
+            {% else %}
+            <span>Draft</span>
+            {% endif %}
         </div>
     </form>
     {% endfor %}
@@ -93,7 +97,11 @@
         </div>
 
         <div class="dates-container d-none d-md-flex col-md-4">
-            <span>{{article.created_at}}</span>
+            {% if article.published_at %}
+            <span>Published {{article.published_at | date:"d M"}}</span>
+            {% else %}
+            <span>Draft</span>
+            {% endif %}
         </div>
     </form>
     {% endif %}

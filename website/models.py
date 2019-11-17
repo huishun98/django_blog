@@ -8,6 +8,8 @@ import random
 
 from froala_editor.fields import FroalaField
 
+from datetime import datetime
+
 # Create your models here.
 
 class Category(models.Model):
@@ -28,7 +30,8 @@ class Article(models.Model):
     category = models.ManyToManyField(Category, related_name='articles')
     content = FroalaField()
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    published_at = models.DateTimeField(blank=True, null=True)
+    saved_at = models.DateTimeField(auto_now=True)
 
     def snippet(self):
         return self.description[:50] + '...'

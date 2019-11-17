@@ -10,44 +10,13 @@
     <div class="edit-button-wrapper">
         <a href="{% url 'article_editor' slug=article.slug %}" class="edit-button">Edit</a>
     </div>
+    {% include 'guests/article_detail_content.html' %}
+    {% elif article.published_at %}
+        {% include 'guests/article_detail_content.html' %}
+    {% else %}
+        {% include '404.html' %}
     {% endif %}
 
-    <h1 class="single-title">{{article.title|title}}</h1>
-
-    <div class="single-date">
-        <p>{{article.created_at}}</p>
-    </div>
-
-    <div class="single-description">
-        <p>{{article.description}}</p>
-    </div>
-
-    <div class="single-body rich-text">
-        {{article.content|safe}}
-    </div>
-
-    <div class="single-category">
-        {% if article.category.all %}
-        <span class="category-label">Categories:</span>
-        {% for cat in article.category.all %}
-        <a href="{% url 'cat_article_list' category=cat.name %}" class="category link">{{cat.name}}</a>
-        {% endfor %}
-        {% endif %}
-    </div>
-
-    <div class="row pagination-group">
-        <div class="col-6 text-right">
-            {% if article.get_previous_by_created_at %}
-            <a href="{% url 'article_detail' slug=article.get_previous_by_created_at.slug %}">Previous</a>
-            {% endif %}
-        </div>
-
-        <div class="col-6">
-            {% if article.get_next_by_created_at %}
-            <a href="{% url 'article_detail' slug=article.get_next_by_created_at.slug %}">Next</a>
-            {% endif %}
-        </div>
-    </div>
 </div>
 
 {% include 'mobile_header.html' %}

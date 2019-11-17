@@ -13,20 +13,28 @@ import os
 import shutil
 import zipfile
 from io import BytesIO
+import ast
 
 from botocore.client import Config
 from website.models import Article, Category
 
-from datetime import date
+from datetime import date, datetime
+
+
+def update_publish_timestamp(slug):
+    Article.objects.update_or_create(
+        slug=slug,
+        defaults={
+            'published_at': datetime.now()
+        })
 
 
 def save_article(slug, form_data):
     payload = {
-        'query': {
-            'title': form_data.get('title'),
-            'description': form_data.get('description'),
-            'content': form_data.get('content')
-        }
+        'title': form_data.get('title'),
+        'description': form_data.get('description'),
+        'content': form_data.get('content'),
+        'saved_at': datetime.now(),
     }
 
     categories = form_data.getlist('category')
@@ -44,7 +52,7 @@ def save_article(slug, form_data):
 
     Article.objects.update_or_create(
         slug=slug,
-        defaults=payload['query'])
+        defaults=payload)
     article = set_categories(slug, categories)
     return article
 
@@ -115,10 +123,11 @@ def download_blogposts(request):
 
     writer = csv.writer(response, delimiter='⁂')
     writer.writerow(['title', 'slug', 'description', 'category',
-                     'content', 'created_at', 'updated_at'])
+                     'content', 'created_at', 'published_at', 'saved_at'])
 
     for obj in items:
-        cat_list = [cat.name for cat in obj.category.all() if len(cat.name.strip()) > 0]
+        cat_list = [cat.name for cat in obj.category.all()
+                    if len(cat.name.strip()) > 0]
         writer.writerow([
             obj.title,
             obj.slug,
@@ -126,7 +135,8 @@ def download_blogposts(request):
             cat_list,
             obj.content.strip('\"'),
             obj.created_at,
-            obj.updated_at
+            obj.published_at,
+            obj.saved_at
         ])
 
     return response
@@ -162,10 +172,11 @@ def upload_blogposts(request):
                 'description': column[2].strip('\"'),
                 'content': column[4].replace('""', '"').strip('\"'),
                 'created_at': column[5],
-                'updated_at': column[6]
+                'published_at': column[6] if column[6] else None,
+                'saved_at': column[7]
             }
         )
-        categories = [item for item in column[3] if len(item.strip()) > 0]
+        categories = [item for item in ast.literal_eval(column[3]) if len(item.strip()) > 0]
         set_categories(slug, categories)
 
     return redirect('settings')

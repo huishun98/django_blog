@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from website.models import Article, Category
 
-from .db_wrappers import save_article, delete_article, delete_category
+from .db_wrappers import save_article, delete_article, delete_category, update_publish_timestamp
 
 
 @login_required(login_url='/login/')
@@ -68,6 +68,7 @@ def article_editor_view(request, slug):
         article_object = save_article(slug, form_data)
 
         if form_data.get("publish") is not None:
+            update_publish_timestamp(slug)
             return redirect('main_editor')
 
         if form_data.get("view") is not None:

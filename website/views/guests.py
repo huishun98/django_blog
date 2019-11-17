@@ -54,7 +54,7 @@ class CategoryArticleListView(ListView):
     def get_queryset(self):
         category = get_object_or_404(
             Category, name=self.kwargs.get('category'))
-        return Article.objects.filter(category=category).order_by('-created_at')
+        return Article.objects.filter(category=category).order_by('-published_at')
 
 
 class ArticleDetailView(DetailView):

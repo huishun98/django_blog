@@ -1,4 +1,4 @@
-.title-input {
+.title-input, .category-input {
     width: 100%;
     min-height: 34px;
     margin-bottom: 10px;
@@ -8,10 +8,14 @@
     padding-right: 15px;
 }
 
+.title-input {
+    margin-bottom: 10px;
+}
+
 .description-input {
     width: 100%;
     min-height: 76px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid var(--border-color-one);
     padding: 5px 15px 5px 15px;
@@ -24,6 +28,11 @@
 
 .main-inputs-container {
     padding-bottom: 20px;
+}
+
+.timestamp {
+    order: 2;
+    padding: 5px;
 }
 
 /* mobile */
@@ -73,7 +82,8 @@
     z-index: -1;
     border-radius: 5px;
     box-shadow: var(--box-shadow);
-    overflow: auto
+    overflow: auto;
+    font-size: 14px;
 }
 
 .done-modal.active {
@@ -156,7 +166,7 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
 .category {
@@ -182,6 +192,9 @@
 @media only screen and (min-width: 768px) {
     .categories-container {
         order: 2
+    }
+    .description-input {
+        margin-bottom: 5px;
     }
     #fullscreen-1, #print-1, #getPDF-1 {
         display: inline-block;

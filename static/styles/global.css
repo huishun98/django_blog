@@ -149,7 +149,7 @@ svg {
     font-size: 24px;
 }
 
-.body, .link, .link-button, .btn, .mobile-header {
+.body, .link, .link-button, .btn, .mobile-header, input, textarea {
     font-size: 14px;
 }
 
