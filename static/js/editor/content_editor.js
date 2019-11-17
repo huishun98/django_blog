@@ -24,7 +24,7 @@ $(document).keypress(function (event) {
         let categoryInput = $("#category-input").val().trim();
         const html = `
         <div class="category-tag">
-            <input class="category" name="category" value="${categoryInput}">
+            <input class="category" name="category" value="${categoryInput}" readonly>
             <a class="link remove-category" href="javascript:void(0)">x</a>
         </div>
         `

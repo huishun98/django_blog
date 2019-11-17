@@ -59,7 +59,7 @@
                     <div id='list' class="category-tags" name="categories">
                         {% for cat in query.category.all %}
                         <div class="category-tag">
-                            <input class="category" name="category" value="{{cat}}">
+                            <input class="category" name="category" value="{{cat}}" readonly>
                             <a class="link remove-category" href="javascript:void(0)">x</a>
                         </div>
                         {% endfor %}
