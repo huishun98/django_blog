@@ -193,7 +193,7 @@ if not DEBUG:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
 
 # Backup files
-BACKUP_CSV_FILENAME = "{date}_posts_backup.csv".format(
+BACKUP_POSTS_FILENAME = "{date}_posts_backup.txt".format(
     date=date.today()
 )
 BACKUP_MEDIA_FILENAME = '{date}_media_backup.zip'.format(
@@ -202,5 +202,4 @@ BACKUP_MEDIA_FILENAME = '{date}_media_backup.zip'.format(
 TEMP_FILE_PATH = os.path.join(BASE_DIR, 'temp')
 
 # Pagination
-
 PAGINATE_BY = 5

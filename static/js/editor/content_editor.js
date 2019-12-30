@@ -3,17 +3,35 @@ $('#done').on('click', function () {
     $("body").css("overflow", "hidden");
     $('.done-modal').addClass('active');
 })
+
 $('#back-button').on('click', function () {
-    // plus save functions,
     $('.cover').removeClass('active');
     $("body").css("overflow", "auto");
     $('.done-modal').removeClass('active');
 })
+
 $(".title-input").change(function (event) {
     $(".title-input").val(event['target'].value)
 })
+
 $(".description-input").change(function (event) {
     $(".description-input").text(event['target'].value)
+})
+
+$("#content-editor-form").submit(function () {
+    const allInputs = $(".fr-element.fr-view")[0].innerHTML + $(".description-input")[0].innerHTML + $(".title-input")[0].innerHTML
+    if (allInputs.includes('\\') || allInputs.includes('|')) {
+        alert(`You can’t use the following characters (\\, |) because these characters are reserved for the system. Please remove these characters and try again.`)
+        return false
+    }
+    const btn = $(this).find(".btn:focus")[0].name
+    const published = $(".published-at").length > 0
+    if (btn == 'save' && published) {
+        return confirm(`Your post has already been published. Would you like to revert it to draft?`)
+    } else if (btn == 'view' && published) {
+        return confirm(`Your post has already been published. Viewing your post will automatically publish any new changes to your post. Would you like to continue?`)
+    }
+    return true
 })
 
 // category

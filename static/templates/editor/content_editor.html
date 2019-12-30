@@ -14,7 +14,7 @@
 
     <div class="cover d-block d-md-none"></div>
 
-    <form method="POST">
+    <form id="content-editor-form" method="POST">
         {{ form.media }}
         {% csrf_token %}
         <div class="row">
@@ -44,7 +44,7 @@
                 {% endif %}
                 {% if query.published_at %}
                 <div class="timestamp">
-                    <span class="bold">Published at:</span>
+                    <span class="bold published-at">Published at:</span>
                     {{query.published_at}}
                 </div>
                 {% endif %}

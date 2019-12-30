@@ -21,11 +21,11 @@ from website.models import Article, Category
 from datetime import date, datetime
 
 
-def update_publish_timestamp(slug):
+def update_publish_timestamp(slug, time=datetime.now()):
     Article.objects.update_or_create(
         slug=slug,
         defaults={
-            'published_at': datetime.now()
+            'published_at': time
         })
 
 
@@ -117,11 +117,9 @@ def download_blogposts(request):
     items = Article.objects.all()
 
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="{date}_posts_backup.csv"'.format(
-        date=date.today()
-    )
+    response['Content-Disposition'] = 'attachment; filename=%s' % settings.BACKUP_POSTS_FILENAME
 
-    writer = csv.writer(response, delimiter='⁂')
+    writer = csv.writer(response, delimiter='\\')
     writer.writerow(['title', 'slug', 'description', 'category',
                      'content', 'created_at', 'published_at', 'saved_at'])
 
@@ -163,7 +161,7 @@ def upload_blogposts(request):
     io_string = io.StringIO(data_set)
     next(io_string)
 
-    for column in csv.reader(io_string, delimiter='⁂', quotechar='|'):
+    for column in csv.reader(io_string, delimiter='\\', quotechar='|'):
         slug = column[1]
         Article.objects.update_or_create(
             slug=slug,

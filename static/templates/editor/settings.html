@@ -22,7 +22,7 @@
                 <form class="flex" action="{% url 'upload_blogposts' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <span class="label">Upload posts:</span>
-                    <input type="file" name="file" accept=".csv" required>
+                    <input type="file" name="file" accept=".txt" required>
                     <input class="link" value="Upload" type="submit" />
                 </form>
                 <form class="flex" action="{% url 'delete_blogposts' %}" method="POST">
@@ -58,7 +58,5 @@
 {% include 'mobile_header.html' %}
 
 <script src="{% static 'global.js' %}"></script>
-<script src="{% static 'editor/settings.js' %}"></script>
-
 
 {% endblock %}

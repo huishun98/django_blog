@@ -18,8 +18,8 @@ On top of basic CRUD functionality, this web app has several other features:
 3. Categorisation of posts
 
 ## Steps to deploy code (using Heroku and AWS S3)
-1. Fork this repository.
-2. Create a Heroku account and initialise a new application. Deploy the forked repository to Heroku.
+1. Clone this repository.
+2. Create a Heroku account and initialise a new application. Deploy the cloned repository to Heroku.
 3. Create and configure AWS S3 account to store media files.
 
 Create a new bucket and add the following code into Permissions > Bucket Policy
@@ -84,7 +84,7 @@ source env/bin/activate
 ```
 2. Install packages
 ```
-pip install -r requirements.txt --no-index
+pip install -r requirements.txt
 ```
 3. Set up local Postgres database and update settings in settings.py
 ```
