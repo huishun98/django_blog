@@ -44,8 +44,9 @@
                 {% endif %}
                 {% if query.published_at %}
                 <div class="timestamp">
-                    <span class="bold published-at">Published at:</span>
-                    {{query.published_at}}
+                    <span class="bold published-at">Published on:</span>
+                    <input class="date-input" name="published_at" type="date"
+                        value="{{ query.published_at|date:'Y-m-d' }}" />
                 </div>
                 {% endif %}
                 <div class="button-group">

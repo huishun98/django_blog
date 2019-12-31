@@ -68,7 +68,12 @@ def article_editor_view(request, slug):
         article_object = save_article(slug, form_data)
 
         if form_data.get('publish') is not None:
-            update_publish_timestamp(article_object.slug)
+            published_at = form_data.get('published_at')
+            if published_at:
+                update_publish_timestamp(
+                    article_object.slug, time=published_at)
+            else:
+                update_publish_timestamp(article_object.slug)
             return redirect('main_editor')
 
         if form_data.get('view') is not None:

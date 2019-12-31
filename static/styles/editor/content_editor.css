@@ -1,4 +1,4 @@
-.title-input, .category-input {
+.title-input, .category-input, .date-input {
     width: 100%;
     min-height: 34px;
     margin-bottom: 10px;
@@ -6,6 +6,10 @@
     border: 1px solid var(--border-color-one);
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.date-input {
+    margin-top: 5px;
 }
 
 .title-input {
@@ -150,6 +154,7 @@
 }
 
 /* category tags */
+
 .category-tag {
     margin-top: 10px;
     position: relative;
