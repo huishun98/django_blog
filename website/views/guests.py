@@ -31,7 +31,7 @@ def logout_view(request):
 class ArticleListView(ListView):
     model = Article
     template_name = 'guests/article_list.html'
-    ordering = ['-created_at']
+    ordering = ['-published_at']
     paginate_by = settings.PAGINATE_BY
 
     def get_context_data(self, **kwargs):
