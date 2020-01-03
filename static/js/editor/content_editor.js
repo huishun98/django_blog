@@ -19,7 +19,7 @@ $(".description-input").change(function (event) {
 })
 
 $("#content-editor-form").submit(function () {
-    const allInputs = $(".fr-element.fr-view")[0].innerHTML + $(".description-input")[0].innerHTML + $(".title-input")[0].innerHTML
+    const allInputs = $(".fr-element.fr-view")[0].innerHTML + $(".description-input")[0].innerHTML + $(".title-input")[0].value
     if (allInputs.includes('\\') || allInputs.includes('|')) {
         alert(`You can’t use the following characters (\\, |) because these characters are reserved for the system. Please remove these characters and try again.`)
         return false
